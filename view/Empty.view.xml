@@ -1,0 +1,7 @@
+<mvc:View controllerName="com.kcc.ZFIORD_PC.controller.Empty"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Page>
+		<content>
+		</content>
+	</Page>
+</mvc:View>

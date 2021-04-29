@@ -1,0 +1,71 @@
+<mvc:View xmlns:core="sap.ui.core" 
+		   xmlns:mvc="sap.ui.core.mvc"
+		   xmlns="sap.m"
+		   height="100%"
+		   controllerName="com.kcc.ZFIORD_SALES.controller.Cart"
+		   xmlns:html="http://www.w3.org/1999/xhtml">
+		   
+	<Page title="{i18n>cart}" class="sapUiResponsiveContentPadding pcUiCartView">
+		<customHeader>
+			<Bar class="pcUiDetailViewBarBackground">
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" press=".onNavBack"/>
+					<Label text="{i18n>skuList}" />
+				</contentLeft>
+				<contentMiddle>
+					<Label text="{i18n>cart}" />
+				</contentMiddle>
+			</Bar>
+		</customHeader>		
+		<content>
+			<HBox justifyContent="Center" alignItems="Center">
+				<VBox class="sapUiLargeMarginEnd">
+					<NumericContent value="6" scale="Units" withMargin="false" class="sapUiMediumMarginBegin"/>
+					<Label text="Product SKUs" />
+				</VBox>
+			</HBox>
+			
+			<Table items="{oCartModel>/}" class="sapUiLargeMarginTop">
+				<columns>
+					<Column width="50%">
+						<Text text="{i18n>productDesc}" /> 	
+					</Column>
+					<Column hAlign="Center">
+						<Text text="{i18n>palletQty}" /> 	
+					</Column>
+					<Column hAlign="Center">
+						<Text text="{i18n>caseQty}" /> 	
+					</Column>
+					<Column hAlign="Center">
+						<Text text="" /> 	
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Label text="{oCartModel>prodDesc}"/>
+							<Label text="{oCartModel>PalletQuantity}"/>
+							<Input value="{oCartModel>caseQuantity}" type="Number" width="50px" class="inputBorder"/>
+							<core:Icon
+								src="sap-icon://delete"
+								tooltip="{i18n>pressToDelete}"
+								size="1.2rem"
+								color="red"
+								press=".onProductDeletePress"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar class="footerColor">
+			
+				<ToolbarSpacer/>
+				<Button text="{i18n>proceedToOrder}" press=".onProceddToOrderPress" class="buttoncustom_cs"/>
+				
+			</OverflowToolbar>
+		</footer> 
+		
+	</Page>
+	
+</mvc:View>

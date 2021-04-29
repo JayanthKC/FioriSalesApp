@@ -1,0 +1,392 @@
+/* Enter your custom styles here */
+.revealGridOverlay {
+	/* z-index: 50;
+	background: white;
+	border-radius: 10px; */
+	background: #FFFFFF 0% 0% no-repeat padding-box !important;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1) !important;
+	border-radius: 4px !important;
+	opacity: 1 !important;
+	width:200px !important;
+ /*    height: 50% !important;
+    width: 25% !important; */
+}
+
+.pcTotalCSS .sapMNCInner.WithoutMargin {
+	justify-content: center !important;
+}
+
+/* filter css */
+.filterCSS.sapMBar {
+	background-color: #0F059E !important;
+}
+
+.footerColorTable .sapMIBar-CTX.sapMFooter-CTX {
+	background: #F3F3F3 !important;
+	border: none !important;
+}
+
+.footerColorTable .sapMBtn:hover>.sapMBtnHoverable {
+	background-color: transparent !important;
+}
+
+.footerColorTable.sapMPopup-CTX .sapMIBar.sapMHeader-CTX {
+	background-color: #0F059E !important;
+}
+
+.dialog_Title.sapMDialog>header.sapMDialogTitle .sapMTitle {
+	color: #ffffff !important;
+}
+
+.icClass.sapMSLIImgIcon, .sapMSLIImgNoInsetIcon {
+    background-color: #1a9898 !important;
+    color: #FFFFFF !important;
+}
+.inputBorder .sapMInputBaseContentWrapper {
+    border: none !important;
+}
+.inputTextColor .sapMInputBaseInner {
+	color: #753BBC;
+}
+
+.filterTextColor.sapMText {
+	color: white !important;
+	text-shadow: none !important;
+}
+
+.filterTextColor .sapMBtnInner {
+	color: white !important;
+}
+
+.filterTextColor.sapMText {
+	color: white !important;
+	text-shadow: none !important;
+}
+
+.fFby {
+	font-weight: bold !important;
+}
+
+.filterlist .sapMSelectListItem {
+	border-top: 1px solid #e5e5e5 !important;
+	border-bottom: 0px solid #e5e5e5 !important;
+	outline: none !important;
+}
+
+.naviconColor {
+	color: white !important;
+}
+
+.borderBottom.sapMTBStandard {
+	border-bottom: solid 0.01rem #F3F3F3 !important;
+}
+
+.buttoncustom_cs .sapMBtnInner {
+	color: #ffffff !important;
+	text-shadow: none !important;
+}
+
+.buttoncustom_cs .sapMBtnIcon {
+	color: #ffffff !important;
+	text-shadow: none !important;
+}
+
+.buttoncustom_cs.sapMBtn:hover>.sapMBtnHoverable {
+	background-color: transparent !important;
+}
+
+.buttoncustom_cs .sapMIBar-CTX .sapMLabel {
+	color: white !important;
+}
+
+.buttoncustom_er .sapMBtnInner{
+	color: #FFBF00 !important;
+	border:none !important;
+}
+
+.buttoncustom_er .sapMBtnIcon {
+	color: #FFBF00 !important;
+	text-shadow: none !important;
+}
+
+.buttoncustom_er.sapMBtn:hover>.sapMBtnHoverable {
+	background-color: transparent !important;
+}
+
+.buttoncustom_er .sapMIBar-CTX .sapMLabel {
+	color: #FFBF00!important;
+}
+
+
+.pcUiButton .sapMBtnInner {
+	background: #FFFFFF !important;
+	border: 0.0625rem solid #753BBC;
+}
+
+.pcUiButton .sapMBtnInner .sapMBtnIcon {
+	color: #9370db !important;
+}
+
+.cCartClass .sapMIBar-CTX .sapMTitle {
+    color: #ffffff !important;
+    text-shadow: 0 0 0.125rem #ffffff;
+}
+
+.cCartbClass .sapMIBar.sapMHeader-CTX {
+    background-color: #0F059E !important;
+    filter: none;
+    background-image: none;
+}
+
+.iplaceholder .sapMInputBaseInner::-webkit-input-placeholder {
+    color:#753BBC !important;
+    text-overflow: ellipsis!important;
+    font-style:normal !important;
+}  
+
+.iplaceholder .sapMInputBaseInner:-ms-input-placeholder {
+    color:#753BBC !important;
+    text-overflow: ellipsis!important;
+    font-style:normal !important;
+} 
+.sarchBarCls .sapMSFF {
+    background: #76767B1A !important;
+    border: 1px solid #BED2F3 !important;
+    border-radius: 0.3rem !important;
+}
+
+.sarchBarCls.sapMFocus>.sapMSFF::before {
+    border: none !important;
+}
+
+.sapMShellBrandingBar {
+    height: 0px !important;
+    
+}
+
+.sapTntInfoLabel {
+    display: inline-grid !important;
+}
+
+.sapMImageContentImageIcon.sapUiIcon {
+    font-size: 2.3rem !important;
+    color: #2f3c48cf !important;
+    padding-bottom: 0px !important;
+    padding-left: 6.7rem !important;
+}
+
+.visibilityClass {
+    visibility: hidden;
+}
+
+.marginClass {
+    margin: 0.25rem;
+}
+
+.bulkVBox {
+    background: #ffffff !important;
+}
+
+.headerText_cs {
+    color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+.stablecol_cs .sapMTableTH {
+    background: none !important;
+    border-bottom: none !important;
+    vertical-align: middle;
+}
+
+.read_cs .sapMInputBaseReadonly .sapMInputBaseContentWrapper {
+    background: none !important;
+}
+
+.NCRF_InFldRadius .sapMInputBaseContentWrapper {
+    border: none !important;
+    outline:none !important;
+    background: none!important;
+}
+
+.bcolorfont_cs .sapMInputBaseInner {
+    color: #753BBC !important;
+    opacity: 1 !important;
+}
+
+.bcolorfontt_cs {
+    /*text-align: right !important;*/
+    color: #753BBC !important;
+    opacity: 1 !important;
+}
+
+/*.sapMInputBaseInner:not(.sapMInputBaseReadonlyWrapper):not(.sapMInputBaseContentWrapperState):focus {*/
+/*    border-color: none !important;*/
+/*    border: none !important;*/
+/*    outline: none !important;*/
+/*}*/
+
+/*.sapMFocus .sapMInputBaseContentWrapper{*/
+/*	outline:none !important;*/
+/*}*/
+
+.btoolbar_cs {
+    border-bottom: solid .025rem #d9d9d9 !important;
+}
+
+/*.sapMIBar-CTX .sapMBtn:hover>.sapMBtnHoverable:not(.sapMBtnActive) {*/
+/*    background-color: none !important;*/
+/*    color: #ffffff!important;*/
+/*}*/
+
+/* Header and Sub header css styles */
+
+.bCustomHeaderClass {
+    background: #0F059E 0% 0% no-repeat padding-box !important;
+    opacity: 1 !important;
+    /*background: #00008B !important;*/
+}
+
+.bCustomHeaderClass.sapMIBar-CTX .sapMLabel {
+	color: #ffffff !important;
+}
+
+.pcUiBarBackground {
+	background: #0F059E !important;
+}
+
+.pcUiBarBackground bdi {
+	color: #FFFFFF !important;
+}
+
+.pcUiBarBackground .sapMBtnIcon {
+	color: #FFFFFF!important;
+}
+
+.pcUiBarBackground.sapMIBar-CTX .sapMLabel {
+	color: #ffffff !important;
+}
+
+
+/* Shell body css styles */
+.pcUiShell section {
+	background: #ffffff !important;
+	/* background: #F3F3F3 !important; */
+	height: 90% !important;
+}
+
+.pageBG.sapMPage>section {
+	background: #F3F3F3 !important;
+}
+
+/* Ashwini - Search Bar - Starts here */
+.searchBarCls .sapMSFF {
+    background: #76767B1A !important;
+    border: 1px solid #BED2F3 !important;
+    border-radius: 0.3rem !important;
+}
+
+.searchBarCls.sapMFocus>.sapMSFF::before {
+	border: none !important;
+}
+/* Ashwini - Search Bar - End here */
+
+/* Ashwini - Footer Bar Starts here */
+.footerColor.sapMIBar-CTX.sapMFooter-CTX {
+    background: #F3F3F3 !important;
+    border: none !important;
+}
+
+.footerColor.sapContrast.sapMBtnInner,
+.sapContrast .sapMBtnInner {
+    color: #0A6ED1 !important;
+    text-shadow: none !important;
+    font-size: 15px !important;
+}
+
+.footerColor.sapMBtn:hover>.sapMBtnHoverable {
+    background-color: transparent !important;
+}
+/* Ashwini - Footer Bar Starts here */
+
+/* Dipak Segmented button Starts here */
+.nOSegBtn .sapMSegBBtn.sapMSegBtnLastVisibleButton .sapMSegBBtnInner {
+    border: 1px solid #666666;
+    border-left-style: none;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    background: transparent;
+    color: white;
+    font-size: small;
+    font-weight: normal;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+
+.nOSegBtn .sapMSegBBtn:first-child .sapMSegBBtnInner {
+    border-color: #666666;
+    border-right-style: none;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    background: transparent;
+    color: white;
+    font-size: small;
+    font-weight: normal;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+ .tHClass{
+	height: 50px !important;
+} 
+.pcUiSegmntBtn .sapMSegBBtnSel .sapMSegBBtnInner {
+	background: #753BBC !important;
+	border-color: #753BBC !important;
+}
+
+.pcUiSegmntBtn .sapMSegBBtnFocusable.sapMSegBBtnSel .sapMSegBBtnInner {
+	background: #753BBC !important;
+}
+
+.pcUiSegmntBtn .sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel .sapMSegBBtnInner {
+	border-right: 1px solid #753BBC !important;	
+}
+/* Dipak Segmented button End here */
+
+.pcUiDetailViewBarBackground  {
+    background: #FFFFFF !important;
+}
+
+/* Imran - Cartview Footer Starts here */
+.pcUiCartView footer {
+    padding-bottom: 5em;
+}
+/* Imran - Cartview Footer End here */
+
+
+.messageBoxColr.sapMDialog.sapMPopup-CTX>header .sapMHeader-CTX,
+	.sapMDialog.sapMPopup-CTX>header .sapMSubHeader-CTX {
+	background-color: #00008B !important;
+}
+
+.messageBoxColr.sapMDialog.sapMMessageBoxWarning .sapMDialogIcon.sapUiIcon
+	{
+	color: #ffffff !important;
+}
+
+.messageBoxColr.sapMDialog>header.sapMDialogTitle .sapMTitle {
+	color: #ffffff !important;
+}
+
+.messageBoxColr .sapMIBar-CTX.sapMFooter-CTX {
+	background-color: #f3f3f3 !important;
+}
+
+.messageBoxColr .sapMIBar .sapMBtnInner {
+	background: none !important;
+	border: none !important;
+	color: #0A6ED1 !important;
+	text-shadow: none !important;
+}
+
+.fcolor.sapMLabel {
+	color: #333333 !important
+}

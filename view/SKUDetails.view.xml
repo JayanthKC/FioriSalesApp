@@ -1,0 +1,173 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:f="sap.f" xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:l="sap.ui.layout"
+	controllerName="com.kcc.ZFIORD_SALES.controller.SKUDetails"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="id_pcsDetails" class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<Bar class="pcUiDetailViewBarBackground">
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" press=".onNavBack" />
+					<Label text="{i18n>skuList}" design="Bold" />
+				</contentLeft>
+				<contentMiddle>
+					<Label text="{oBrandsModel>/skuData/Maktx}" design="Bold" />
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<content>
+			<HBox justifyContent="Center" alignItems="Center">
+				<f:Avatar src="{oBrandsModel>/skuData/Skuimageurl}"
+					displaySize="XL" displayShape="Square" backgroundColor="Accent7">
+				</f:Avatar>
+			</HBox>
+
+			<List class="sapUiSmallMarginTop">
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<HBox justifyContent="SpaceBetween" alignItems="Center"
+								class="marginClass"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<Label text="{i18n>quantityInCases}" />
+								<HBox>
+									<Input
+										value="{parts:['oCartModel>/','oBrandsModel>/skuData/Matnr'], formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retQtyincases'}"
+										type="Number" placeholder="0" width="50px"
+										class="iplaceholder inputBorder inputTextColor">
+										<layoutData>
+											<FlexItemData alignSelf="End" />
+										</layoutData>
+									</Input>
+									<core:Icon src="sap-icon://cart-4" size="1.2rem"
+										color="#9370db" tooltip="{i18n>addToCart}"
+										class="sapUiSmallMarginBegin sapUiTinyMarginTop"
+										press="onAddToCartPress" />
+								</HBox>
+							</HBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<FlexBox justifyContent="SpaceBetween"
+								alignItems="Center" class="sapUiTinyMargin"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<Label text="Pallet Type" />
+								<SegmentedButton id="id_stype"
+									class="segButtonColor pcUiSegmntBtn"
+									tooltip="{i18n>palletSize}"
+									selectionChange="onPTypeChange"
+									selectedKey="{parts:['oCartModel>/','oBrandsModel>/skuData/Matnr','globalModel>/dPType'], formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retPalletType'}">
+									<items>
+										<SegmentedButtonItem
+											key="{i18n>s1PalletSize}" text="{i18n>s1PalletSize}" />
+										<SegmentedButtonItem
+											key="{i18n>s2PalletSize}" text="{i18n>s2PalletSize}" />
+										<SegmentedButtonItem
+											key="{i18n>s3PalletSize}" text="{i18n>s3PalletSize}" />
+									</items>
+								</SegmentedButton>
+							</FlexBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<FlexBox justifyContent="SpaceBetween"
+								alignItems="Center" class="sapUiTinyMargin"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<Label text="SKU Id" />
+								<Label text="{oBrandsModel>/skuData/Matnr}" />
+							</FlexBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<VBox class="sapUiTinyMargin"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<FlexBox justifyContent="SpaceBetween"
+									alignItems="Center">
+									<Label text="{i18n>description}" />
+									<Button text="{i18n>showMore}" press="onPresssShowMore"
+										class="showmoreButton" visible="false" />
+								</FlexBox>
+								<Text id="idDescription"
+									text="{parts:['oBrandsModel>/matText','oBrandsModel>/skuData/Matnr'], formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retMatText'}"
+									maxLines="2" />
+							</VBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<FlexBox justifyContent="SpaceBetween"
+								alignItems="Center" class="sapUiTinyMargin"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<Label text="{i18n>packSize}" />
+								<Label text="{oBrandsModel>/skuData/Pacsize}" />
+							</FlexBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<FlexBox justifyContent="SpaceBetween"
+								alignItems="Center" class="sapUiTinyMargin"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<Label text="{i18n>itfBarCode}" />
+								<Label text="{oBrandsModel>/skuData/Itrbcode}" />
+							</FlexBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<FlexBox justifyContent="SpaceBetween" alignItems="Start"
+								class="sapUiTinyMargin"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<Label text="{i18n>eanCode}" />
+								<Label text="{oBrandsModel>/skuData/Eancode}" />
+							</FlexBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<FlexBox justifyContent="SpaceBetween"
+								alignItems="Center" class="sapUiTinyMargin"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<Label text="{i18n>casesPerPallet}" />
+								<Label id="c_ptext" text="{parts:['oCartModel>/','oBrandsModel>/skuData','globalModel>/dPType'], formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retCPalet'}" />
+							</FlexBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<CustomListItem>
+					<FlexBox alignItems="Center" justifyContent="Center">
+						<items>
+							<FlexBox justifyContent="SpaceBetween"
+								alignItems="Center" class="sapUiTinyMargin"
+								width="{= ${device>/system/phone} === true ? '100%' : '60%' }">
+								<Label text="{i18n>casesPerlayer}" />
+								<Label id="c_ltext" text="{parts:['oCartModel>/','oBrandsModel>/skuData','globalModel>/dPType'], formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retcType'}" />
+							</FlexBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+				<!-- <CustomListItem> <FlexBox alignItems="Center" justifyContent="Center"> 
+					<items> <FlexBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMargin" 
+					width="{= ${device>/system/phone} === true ? '100%' : '60%' }"> <Label text="{i18n>eanCode}"/> 
+					<Label text="5029054546987" /> </FlexBox> </items> </FlexBox> </CustomListItem> -->
+			</List>
+		</content>
+	</Page>
+</mvc:View>

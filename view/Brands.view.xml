@@ -1,0 +1,53 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.f"
+	xmlns:tnt="sap.tnt"
+	controllerName="com.kcc.ZFIORD_SALES.controller.Brands"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Page class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<Bar class="pcUiBarBackground">
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" text="New Order Form"
+						press=".onProceddToOrderPress" class="buttoncustom_cs"
+						visible="{globalModel>/dOTile}" />
+					<Button icon="sap-icon://nav-back" text="Home"
+						press=".onNavBackToHomePage" class="buttoncustom_cs"
+						visible="{globalModel>/dPTile}" />
+				</contentLeft>
+				<contentMiddle>
+					<Label text="{i18n>productCatalogAppTitle}" />
+				</contentMiddle>
+				<contentRight>
+					<core:Icon src="sap-icon://cart"
+						tooltip="{i18n>cartAction}" size="1.4rem" color="#FFFFFF"
+						press=".onCartPress" />
+					<tnt:InfoLabel
+						text="{path:'oCartModel>/', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retItemsLength'}"
+						width="40px" renderMode="Narrow" colorScheme="3"
+						displayOnly="true" />
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<HBox justifyContent="Center" alignItems="Center">
+				<Label text="Brands showing for - "
+					class="sapUiSmallMarginEnd" />
+				<Label text="{globalModel>/sOrg} ({globalModel>/sOrgDesc})"
+					design="Bold" />
+			</HBox>
+			<HBox items="{path: 'oBrandsModel>/Brands', sorter: [{ path:'Brand', descending: false}]}" justifyContent="Center"
+				wrap="Wrap" position="Center" class="sapUiLargeMargin">
+				<VBox alignItems="Center" class="sapUiLargeMargin">
+					<f:Avatar
+						src="{oModelImagePath>/sImagePath}/{oBrandsModel>Brand}.png"
+						displaySize="XL" app:bId="{oBrandsModel>Brand}"
+						press=".onBrandsPress">
+					</f:Avatar>
+					<Text text="{oBrandsModel>Brand}" class="sapUiSmallMarginTop">
+					</Text>
+				</VBox>
+			</HBox>
+		</content>
+	</Page>
+</mvc:View>

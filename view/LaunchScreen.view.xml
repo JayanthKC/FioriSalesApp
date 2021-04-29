@@ -1,0 +1,71 @@
+<mvc:View
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:f="sap.f"
+        xmlns:card="sap.f.cards"
+        xmlns:core="sap.ui.core"
+        displayBlock="true"
+        height="100%"
+        controllerName="com.kcc.ZFIORD_SALES.controller.LaunchScreen">
+
+    <Page title="{i18n>lauchScreenTitle}" class="sapUiResponsiveContentPadding">
+        <customHeader>
+            <Bar class="bCustomHeaderClass">
+                <contentLeft>
+                    <Button text="Launchpad" class="buttoncustom_cs" icon="sap-icon://nav-back" press="naveBackToLaunchPad"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Label text="{i18n>lauchScreenTitle}" class="headerText_cs"></Label>
+                </contentMiddle>
+                <contentRight>
+<!--                    <Button text="Submit"></Button>-->
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            
+<!--            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="FIORD - Sales"-->
+<!--                subheader="Sales Order" press="onSalesOrderPressed">-->
+<!--                <TileContent>-->
+<!--                    <ImageContent src="sap-icon://my-sales-order" />-->
+<!--                </TileContent>-->
+<!--            </GenericTile>-->
+<!---->
+<!--            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Product Catalog"-->
+<!--                subheader="Products" press="onProductCatalogPressed">-->
+<!--                <TileContent>-->
+<!--                    <ImageContent src="sap-icon://product" />-->
+<!--                </TileContent>-->
+<!--            </GenericTile>-->
+
+        <f:GridContainer id="demoGrid" class="sapUiSmallMargin">
+            <f:layout>
+                <f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+            </f:layout>
+            <f:layoutXS>
+                <f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
+            </f:layoutXS>
+            <f:items>
+                <GenericTile header="FIORD - Sales" subheader="Sales Order" press="onSalesOrderPressed">
+                    <layoutData>
+                        <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                    </layoutData>
+                    <TileContent>
+                        <ImageContent src="sap-icon://my-sales-order" />
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile header="Product Catalog" subheader="Products" press="onProductCatalogPressed">
+                    <layoutData>
+                        <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                    </layoutData>
+                    <TileContent>
+                        <ImageContent src="sap-icon://product" />
+                    </TileContent>
+                </GenericTile>
+
+            </f:items>
+        </f:GridContainer>
+        </content>
+    </Page>
+</mvc:View>

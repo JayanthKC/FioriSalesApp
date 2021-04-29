@@ -1,0 +1,461 @@
+<mvc:View controllerName="com.kcc.ZFIORD_SALES.controller.OrderCreation" 
+		  xmlns:mvc="sap.ui.core.mvc"
+		  xmlns:core="sap.ui.core" 
+		  xmlns:tnt="sap.tnt"
+		  xmlns:f="sap.ui.layout.form"
+		  displayBlock="true"
+		  xmlns="sap.m"
+		  xmlns:l="sap.ui.layout">
+	<Page id="page" class="pageBG">
+		<customHeader>
+			<Bar class="bCustomHeaderClass">
+				<contentLeft>
+					<Button text="Orders" class="buttoncustom_cs" icon="sap-icon://nav-back" press="onDiscardPress"/>
+				</contentLeft>
+				<contentMiddle>
+					<Label text="New Order Form" class="buttoncustom_cs"></Label>
+				</contentMiddle>
+				<contentRight>
+					<Button text="Email" class="buttoncustom_cs" icon="" press=".onPressEmail"/>
+					<Button id="messagePopoverBtn" class="buttoncustom_er"
+						icon="sap-icon://message-error" type="Error"
+						visible="{= ${errorMsgModel>/}.length > 0 }"
+						text="{= ${errorMsgModel>/}.length} Error(s)"
+						press=".handleMessagePopoverPress" />
+					<Button text="Submit" class="buttoncustom_cs" press=".onSubmitPress"></Button>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<VBox class="bulkVBox">
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Label text="Customer Name" required="true" class="fcolor sapUiTinyMarginTop sapUiTinyMarginBottom" />
+							<layoutData>
+								<l:GridData span="XL2 L2 M3 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+                  <Input textAlign="Right"  
+                   value="{oJsonModelOrder>/MapOrderHdr/0/NameSh}" 
+                    placeholder="Select Customer Name"
+                    liveChange="onName"
+                    id="name"
+                    change="onValidUInput"
+                     class="NCRF_InFldRadius read_cs bcolorfont_cs"/>	
+							<layoutData>
+								<l:GridData span="XL6 L6 M5 S6"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Icon xmlns="sap.ui.core" 
+							src="sap-icon://navigation-right-arrow" 
+							press=".onCustomerSelectPress" 
+							class="sapUiTinyMarginTop"></Icon>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Customer Address" required="true" class="fcolor sapUiTinyMarginTop" />
+							<layoutData>
+					<l:GridData span="XL2 L2 M3 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Input textAlign="Right" 
+						value="{oJsonModelOrder>/MapOrderHdr/0/Delvaddr1}" 
+						change="onValidUInput"
+						liveChange="onAddress"
+                        id="address"
+                        placeholder="Select Customer Address " 
+							 class="NCRF_InFldRadius read_cs bcolorfont_cs"/>
+							<layoutData>
+								<l:GridData span="XL6 L6 M5 S6"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Label text="Ship To" required="true" class="fcolor sapUiTinyMarginTop"></Label>
+							<layoutData>
+								<l:GridData span="XL2 L2 M3 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Input textAlign="Right" 
+								value="{oJsonModelOrder>/MapOrderHdr/0/KunnrSh}" 
+								change=""
+								liveChange="onNumValidation"
+                        		id="idShipTo"
+                        		placeholder="Enter Ship To" 
+							 	class="NCRF_InFldRadius read_cs bcolorfont_cs"/>
+							<layoutData>
+								<l:GridData span="XL6 L6 M5 S6"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Label text="Sold To" required="true" class="fcolor sapUiTinyMarginTop"></Label>
+							<layoutData>
+								<l:GridData span="XL2 L2 M3 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Input id="idSoldto"  textAlign="Right" change="onSoldTo" 
+                            value="{oJsonModelOrder>/MapOrderHdr/0/Kunnr}" class="NCRF_InFldRadius bcolorfont_cs"
+                            liveChange="onNumValidation"
+							placeholder="Enter Sold to "></Input>
+							<layoutData>
+								<l:GridData span="XL6 L6 M5 S6"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Icon xmlns="sap.ui.core" class="sapUiTinyMarginTop" 
+							press=".onSoldtoSelectPress" 
+							src="sap-icon://navigation-right-arrow"/>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Label text="PO Number" required="true" class="fcolor sapUiTinyMarginTop"/>
+							<layoutData>
+								<l:GridData span="XL2 L2 M3 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Input id="idPoNumber" textAlign="Right" value="{oJsonModelOrder>/MapOrderHdr/0/Bstnk}" 
+							class="NCRF_InFldRadius bcolorfont_cs" 
+							liveChange="" 
+							placeholder="Enter PO Number "></Input>
+							<layoutData>
+								<l:GridData span="XL6 L6 M5 S6"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2" />
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Label text="Delivery Date" required="true" class="fcolor sapUiTinyMarginTop"/>
+							<layoutData>
+								<l:GridData span="XL5 L5 M3 S2" />
+							</layoutData>
+						</VBox>
+						<VBox>
+							<DatePicker id="idDate" change="onDateValidation" textAlign="Right" minDate="{dateModel>/minDate}" 
+							value="{path:'oJsonModelOrder>/MapOrderHdr/0/Vdatu',formatter:'com.kcc.ZFIORD_SALES.util.Formatter.dateConversion'}" 
+							displayFormat="dd MMM yyyy"
+							class="NCRF_InFldRadius bcolorfont_cs" editable="true" placeholder="Enter Delivery Date"/>
+							<layoutData>
+								<l:GridData span="XL3 L3 M5 S6" />
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+			</VBox>
+			<VBox class="sapUiSmallMarginTop bulkVBox">
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Contact Name" class="fcolor sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+							<layoutData>
+								<l:GridData span="XL2 L2 M3 S6"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Input id="idCname" value="{oJsonModelOrder>/MapOrderHdr/0/Cname}" textAlign="Right" 
+							class="NCRF_InFldRadius bcolorfont_cs" 
+							liveChange="onStringValidation" placeholder="Enter Contact Name "></Input>
+							<layoutData>
+								<l:GridData span="XL6 L6 M5 S2"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Contact Number" class="fcolor sapUiTinyMarginTop"/>
+							<layoutData>
+								<l:GridData span="XL2 L2 M3 S6"/>
+							</layoutData>
+						</VBox>
+						
+						<VBox>
+							<Input id="idCNumber" value="{oJsonModelOrder>/MapOrderHdr/0/Cnumber}" 
+							textAlign="Right" class="NCRF_InFldRadius bcolorfont_cs" liveChange="onNumValidation"
+								placeholder="Enter mobile number "></Input>
+							<layoutData>
+								<l:GridData span="XL6 L6 M5 S2"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Contact Email" class="fcolor sapUiTinyMarginTop"/>
+							<layoutData>
+								<l:GridData span="XL2 L2 M3 S6"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Input id="idCEmail" value="{oJsonModelOrder>/MapOrderHdr/0/ContactEmail}" textAlign="Right" 
+							class="NCRF_InFldRadius bcolorfont_cs" liveChange="onEmailValidation"
+								placeholder="Enter email ID "></Input>
+							<layoutData>
+								<l:GridData span="XL6 L6 M5 S2"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+			</VBox>
+			<VBox class="sapUiSmallMarginTop bulkVBox">
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Delivery Text" class="fcolor sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+							<Input id="idDelText" width="100%" change="onDELTxtChange"
+							value="{oJsonModelOrder>/MapOrderText/0/Tdline}" 
+							class="NCRF_InFldRadius bcolorfont_cs"/>
+							<layoutData>
+								<l:GridData span="XL8 L8 M8 S8"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Invoice Text" class="fcolor sapUiTinyMarginTop"/>
+							<Input id="idInvText" width="100%" change="onINVTxtChange"
+							value="{oJsonModelOrder>/MapOrderText/1/Tdline}" 
+							class="NCRF_InFldRadius bcolorfont_cs"/>
+							<layoutData>
+								<l:GridData span="XL8 L8 M8 S8"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Internal Text" class="fcolor sapUiTinyMarginTop"/>
+							<Input id="idIntText" width="100%" change="onINTTxtChange"
+							value="{oJsonModelOrder>/MapOrderText/2/Tdline}" 
+							class="NCRF_InFldRadius bcolorfont_cs"/>
+							<layoutData>
+								<l:GridData span="XL8 L8 M8 S8"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+			</VBox>
+			<VBox class="sapUiSmallMarginTop bulkVBox">
+				<l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Full Vehicle Discount" class="fcolor sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+							<layoutData>
+								<l:GridData span="XL6 L6 M6 S6"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Switch id="idVDiscount" state="{= ${oJsonModelOrder>/MapOrderHdr/0/VehicleDiscount} !== '' ? true : false }" 
+							class="sapUiLargeMarginBegin" customTextOn="" customTextOff="" change="onVDiscountChange"></Switch>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				<Toolbar class="borderBottom" width="100%" height="1px"/>
+				<!-- <l:Grid vSpacing="0">
+					<l:content>
+						<VBox>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Text text="Send Order by Email" class="fcolor sapUiTinyMarginTop"/>
+							<layoutData>
+								<l:GridData span="XL6 L6 M6 S6"/>
+							</layoutData>
+						</VBox>
+						<VBox>
+							<Switch state="false" class="sapUiLargeMarginBegin" customTextOn=" " customTextOff=" "></Switch>
+							<layoutData>
+								<l:GridData span="XL2 L2 M2 S2"/>
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid> -->
+			</VBox>
+			<HBox justifyContent="Center" alignItems="Center" class="sapUiSmallMarginTop bulkVBox">
+				<VBox class="sapUiLargeMarginEnd">
+					<NumericContent value="{path:'oJsonModelOrder>/MapOrderItems', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retItemsLength'}" 
+					withMargin="false" class="pcTotalCSS"/>
+					<Label text="Product SKUs"></Label>
+				</VBox>
+				<VBox class="sapUiLargeMarginEnd">
+					<NumericContent value="{path:'oJsonModelOrder>/MapOrderItems', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retQtyTCases'}"
+					 withMargin="false" class="pcTotalCSS" />
+					<Label text="Total Cases"></Label>
+				</VBox>
+				<VBox class="sapUiLargeMarginEnd">
+					<NumericContent value="{path:'oJsonModelOrder>/MapOrderItems', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retQtyTPallets'}" 
+					withMargin="false" class="pcTotalCSS"/>
+					<Label text="Total Pallets"></Label>
+				</VBox>
+			</HBox>
+			<!--<VBox class="sapUiSmallMarginTop bulkVBox">-->
+			<Table id="idOrdersTable" updateFinished="onptfilterapply"
+			 class="stablecol_cs bulkVBox sapUiSmallMarginTop" 
+			 inset="true" 
+			 items="{path:'oJsonModelOrder>/MapOrderItems'}">
+				<columns>
+					<Column hAlign="Left" width="15%">
+						<Text text="{i18n>productCode}" />
+					</Column>
+					<Column hAlign="Left" width="30%">
+						<Text text="{i18n>productDesciption}" />
+					</Column>
+					<Column hAlign="Center" width="10%">
+						<Text text="{i18n>palletType}" />
+					</Column>
+					<Column hAlign="Right" width="15%">
+						<Text text="{i18n>caseQuantity}" />
+					</Column>
+					<Column hAlign="Right" width="20%">
+						<Text text="{i18n>palletQuantity}" />
+					</Column>
+					<Column hAlign="Right" width="10%">
+						<Text text=""/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{oJsonModelOrder>Matnr}"/>
+							<Text text="{oJsonModelOrder>Maktx}"/>
+							<Text text="{oJsonModelOrder>Letyp}" />
+							<Text text="{oJsonModelOrder>Palletqty}" />
+							<Text text="{oJsonModelOrder>Kwmeng}" class="bcolorfontt_cs"/>
+							<core:Icon
+								src="sap-icon://delete"
+								tooltip="{i18n>pressToDelete}"
+								size="1.2rem"
+								color="red"
+								press="onProductDeletePress"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<!--</VBox>-->
+		</content>
+		<footer>
+			<Bar class="footerColor">
+				<contentLeft>
+					<Button text="Discard" class="footerColor" press=".onDiscardPress"/>
+				</contentLeft>
+				<contentMiddle>
+					<Button text="Add Products" press="onAddProductPressed" class="footerColor"/>
+				</contentMiddle>
+				<contentRight>
+					<Button text="Save" class="footerColor" press=".onSavePress"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

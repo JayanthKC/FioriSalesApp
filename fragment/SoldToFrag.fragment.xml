@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" >
+		<SelectDialog class="footerColorTable dialog_Title"
+		noDataText="No Sold To Found"
+		title="Select Sold To"
+		search="handleSearch"
+		confirm="onSelectItem"
+		cancel=".onDialogClose"
+		rememberSelections="true"
+		items="{path:'osoldToModel>/'}">
+		<StandardListItem 
+			title="{osoldToModel>Kunnr}"
+			type="Active" description="{osoldToModel>Name1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

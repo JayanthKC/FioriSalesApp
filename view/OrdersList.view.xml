@@ -1,0 +1,83 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.kcc.ZFIORD_SALES.controller.OrdersList"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<Bar class="pcUiBarBackground">
+				<contentLeft>
+					<Button text="{i18n>allOrderTitle}" icon="sap-icon://nav-back" press=".onNavBackToAllCustomers"/>
+				</contentLeft>
+				<contentMiddle>
+<!-- 					<Label text="{i18n>ordersListTitle}" /> -->
+					<Label text="{data>/name}" />
+				</contentMiddle>
+				<contentRight>		
+					<Button id="c_filter" press="oncFilterPress"
+							text="Clear Filter" class="sapUiSmallMarginEnd filterButton"
+							visible="false" />			
+					<Button text="{i18n>filter}" press=".handleFilterButtonPressed"/>
+					<Button text="{i18n>createNewOrder}" press=".onCreateNewOrderPress"/>
+				</contentRight>
+			</Bar>
+		</customHeader>		
+		<subHeader>
+			<Toolbar class="pcUiBarBackground">
+				<ToolbarSpacer/>
+				<SegmentedButton selectedKey="allOrders" selectionChange=".onTypeOfOrdersListChange" width="50%"  class="sapUiMediumMarginBegin pcUiSegmntBtn" id="segmentedButtonId">
+					<items>
+						<SegmentedButtonItem text="{i18n>allOrders}" key="allOrders" />
+						<SegmentedButtonItem text="{i18n>draftOrders}"  key="draftOrders" />
+					</items>
+				</SegmentedButton>
+				<ToolbarSpacer/>			
+			</Toolbar>
+		</subHeader>
+		<content>
+			<HBox width="100%">
+				<VBox width="100%">
+					<SearchField height="20%" placeholder="{i18n>searchOrdersListPlaceHolder}" 
+					class="searchBarCls" liveChange=".onOrdersListSearch" />
+				</VBox>
+			</HBox>
+			<Table id="idAllOrdersList" 
+				items="{path:'oJsonModelOrderList>/' , sorter: [{ path:'Vdatu', descending: false}]}" >
+				<columns>
+					<Column width="15%">
+						<Text text="{i18n>salesOrderID}"></Text> 	
+					</Column>
+					<Column width="20%">
+						<Text text="{i18n>poNumber}"></Text> 	
+					</Column>
+					<Column width="15%">
+						<Text text="{i18n>deliveryDate}"></Text> 	
+					</Column>
+					<Column width="30%">
+						<Text text="{i18n>shipTo}"></Text> 	
+					</Column>
+					<Column width="15%">
+						<Text text="{i18n>status}"></Text> 	
+					</Column>
+					<Column width="5%">
+						<Text text=""></Text> 	
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active">
+						<cells>	
+							<ObjectIdentifier title="{oJsonModelOrderList>Vbeln}"/>			
+							<Text text="{oJsonModelOrderList>Bstnk}" />
+							<Text text="{path:'oJsonModelOrderList>Vdatu',formatter:'com.kcc.ZFIORD_SALES.util.Formatter.dateConversion'}" />
+							<Text text="{oJsonModelOrderList>KunnrSh} / {oJsonModelOrderList>Name1}" />
+							<ObjectStatus text="{oJsonModelOrderList>Statdesc}" state="Warning" />				
+							<core:Icon
+								src="sap-icon://overflow"
+								tooltip="{i18n>chooseYourAction}"
+								size="1.2rem"
+								color="#9370db"
+								press=".onActionPress"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

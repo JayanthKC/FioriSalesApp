@@ -1,0 +1,70 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.kcc.ZFIORD_SALES.controller.AllCustomers"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>allOrderTitle}"
+		class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<Bar class="pcUiBarBackground">		
+				<contentLeft>
+					<Button text="{i18n>lauchScreenTitle}" icon="sap-icon://nav-back" press=".onNavBackToHome"/>
+				</contentLeft>		
+				<contentMiddle>
+					<Label text="{i18n>allOrderTitle}" />
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<subHeader>
+			<Toolbar class="pcUiBarBackground">
+				<ToolbarSpacer/>
+				<SegmentedButton selectedKey="allOrders" selectionChange=".onTypeOfCustomersListChange" width="50%"  class="sapUiMediumMarginBegin pcUiSegmntBtn">
+					<items>
+						<SegmentedButtonItem text="{i18n>allCustomers}" key="allCustomers" />
+						<SegmentedButtonItem text="{i18n>favourites}"  key="favourites" />
+					</items>
+				</SegmentedButton>
+				<ToolbarSpacer/>			
+			</Toolbar>
+		</subHeader>
+		<content>
+			<HBox width="100%">
+				<VBox width="100%">
+					<SearchField height="5%" placeholder="{i18n>searchAllCustomersPlaceHolder}" 
+					class="searchBarCls" liveChange=".onAllCustomersSearch" />
+				</VBox>
+			</HBox>
+			
+			<Table id="idAllCustomersList" 
+				   items="{ path: 'oJsonModelCustomers>/' }"				   
+				   itemPress=".onCustomerListPress">
+				<columns>
+					<Column width="20%">
+						<Text text="{i18n>shipTo}" /> 	
+                    </Column>
+					<Column width="30%">
+						<Text text="{i18n>customerName}" /> 	
+                	</Column>
+					<Column width="30%">
+						<Text text="{i18n>location}" /> 	 
+                	</Column>
+					<Column width="15%">
+						<Text text="{i18n>postalCode}" /> 	 
+                   	</Column>
+					<Column width="5%">
+						<Text text="" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active">
+						<cells>	
+							<ObjectIdentifier title="{oJsonModelCustomers>KunnrSh}"/>			
+							<Text text="{oJsonModelCustomers>Name1}" />
+							<Text text="{oJsonModelCustomers>Ort01}" />
+							<Text text="{oJsonModelCustomers>Pstlz}" />							
+							<core:Icon src="{= ${oJsonModelCustomers>IsFavourite} === 'X' ? 'sap-icon://favorite' : 'sap-icon://unfavorite' }" 
+							size="16px" color="#9370db" press=".onFavouritesPress"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

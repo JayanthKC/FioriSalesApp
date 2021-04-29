@@ -1,0 +1,185 @@
+<mvc:View
+	controllerName="com.kcc.ZFIORD_SALES.controller.OrderDetails"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<Page id="page" class="pageBG">
+		<customHeader>
+			<Bar class="pcUiBarBackground">
+				<contentLeft>
+					<Button text="Orders" icon="sap-icon://nav-back"
+						class="buttoncustom_cs" press=".onNavBackToAllOrders" />
+				</contentLeft>
+				<contentMiddle>
+					<Label text="Order Details" class="headerText_cs"></Label>
+				</contentMiddle>
+				<contentRight>
+					<Button text="Email" class="buttoncustom_cs" icon="" press=".onPressEmail"/>
+					<Button class="buttoncustom_cs" text="Copy Order Details"
+						press="onCopyOrderPress" />
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<!-- <VBox id="id_oDView">
+				<core:Fragment
+					fragmentName="com.kcc.ZFIORD_SALES.fragment.orderDetails" type="XML" />
+			</VBox> -->
+		
+			<VBox class="bulkVBox">
+				<l:Grid>
+					<l:content>
+						<VBox class="sapUiSmallMargin sapUiMediumMarginBegin">
+							<ObjectIdentifier
+								title="{headerDataModel>/0/Name1}" />
+							<Text text="Sold to {headerDataModel>/0/Kunnr}" />
+							<Text text="{headerDataModel>/0/StrSuppl2}" />
+							<Text text="{headerDataModel>/0/Ort01}" />
+							<Text text="{headerDataModel>/0/Pstlz}" />
+							<HBox class="sapUiSmallMarginTop">
+								<Text text="PO {headerDataModel>/0/Bstnk}" />
+							</HBox>
+							<layoutData>
+								<l:GridData span="XL3 L3 M3 S3" />
+							</layoutData>
+						</VBox>
+						<VBox class="sapUiSmallMargin sapUiLargeMarginBegin">
+							<ObjectIdentifier title="Delivery Details" />
+							<Text text="Ship to {headerDataModel>/0/KunnrSh}" />
+							<Text text="{headerDataModel>/0/Delvaddr1}, {headerDataModel>/0/Ddcity}," />
+							<Text text="{headerDataModel>/0/Ddpostalcode}" />
+							<VBox class="sapUiSmallMarginTop">
+								<Text text="Ordered on {path:'headerDataModel>/0/Erdat',formatter:'com.kcc.ZFIORD_SALES.util.Formatter.dateConversion'}" />
+								<Text text="Delivery Due on {path:'headerDataModel>/0/Vdatu',formatter:'com.kcc.ZFIORD_SALES.util.Formatter.dateConversion'}" />
+							</VBox>
+							<layoutData>
+								<l:GridData span="XL3 L3 M3 S3" />
+							</layoutData>
+						</VBox>
+						<VBox class="sapUiSmallMargin sapUiLargeMarginBegin">
+							<Text text="" />
+							<Text text="{headerDataModel>/0/NameSh}" />
+							<Text text="{headerDataModel>/0/Delvaddr2}" />
+							<Text text="{headerDataModel>/0/EmailShipto}" />
+							<HBox class="sapUiSmallMarginTop">
+								<tnt:InfoLabel
+									text="{headerDataModel>/0/Statdesc}" displayOnly="true"
+									colorScheme="1" />
+							</HBox>
+							<layoutData>
+								<l:GridData span="XL3 L3 M3 S3" />
+							</layoutData>
+						</VBox>
+						<VBox class="sapUiSmallMargin">
+							<HBox class="sapUiSmallMargin">
+								<Icon xmlns="sap.ui.core" src="sap-icon://shipping-status"
+									color="#008000" class="sapUiSmallMarginEnd" />
+								<Text text="{= ${headerDataModel>/0/VehicleDiscount} === 'X' ? 'Full Truck Discount' : 'No Discounts' }" />
+							</HBox>
+							<!-- <HBox class="sapUiSmallMargin">
+								<Icon xmlns="sap.ui.core" src="sap-icon://email"
+									color="#008000" class="sapUiSmallMarginEnd" />
+								<Text text="Email Order Details" />
+							</HBox> -->
+							<layoutData>
+								<l:GridData span="XL3 L3 M3 S3" />
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+			</VBox>
+			<VBox class="bulkVBox sapUiMediumMarginTop">
+				<l:Grid>
+					<l:content>
+						<VBox class="sapUiSmallMargin sapUiMediumMarginBegin">
+							<Text text="Delivery Text" />
+							<Text text="{oJsonModelOrder>/MapOrderText/0/Tdline}" />
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S4" />
+							</layoutData>
+						</VBox>
+						<VBox class="sapUiSmallMargin">
+							<Text text="Invoice Text" />
+							<Text text="{oJsonModelOrder>/MapOrderText/1/Tdline}" />
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S4" />
+							</layoutData>
+						</VBox>
+						<VBox class="sapUiSmallMargin">
+							<Text text="Internal Text" />
+							<Text text="{oJsonModelOrder>/MapOrderText/2/Tdline}" />
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S4" />
+							</layoutData>
+						</VBox>
+					</l:content>
+				</l:Grid>
+			</VBox>
+			<HBox justifyContent="Center" alignItems="Center"
+				class="sapUiMediumMarginTop bulkVBox">
+				<VBox class="sapUiLargeMarginEnd">
+					<NumericContent value="{path:'productModel>/', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retItemsLength'}" 
+					withMargin="false" class="pcTotalCSS" />
+					<Label text="Product SKUs"></Label>
+				</VBox>
+				<VBox class="sapUiLargeMarginEnd">
+					<NumericContent value="{path:'productModel>/', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retQtyTCases'}" 
+					withMargin="false" class="pcTotalCSS" />
+					<Label text="Total Cases"></Label>
+				</VBox>
+				<VBox class="sapUiLargeMarginEnd">
+					<NumericContent value="{path:'productModel>/', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retQtyTPallets'}" 
+					withMargin="false" class="pcTotalCSS" />
+					<Label text="Total Pallets"></Label>
+				</VBox>
+			</HBox>
+			<VBox class="sapUiMediumMarginTop bulkVBox">
+				<Table id="idOrdersTable"
+					class="stablecol_cs sapUiSmallMargin sapUiMediumMarginBegin"
+					items="{path:'productModel>/'}">
+					<columns>
+						<Column hAlign="Left" width="15%">
+							<Text text="{i18n>productCode}" />
+						</Column>
+						<Column hAlign="Left" width="25%">
+							<Text text="{i18n>productDesciption}" />
+						</Column>
+						<Column hAlign="Center" width="10%">
+							<Text text="{i18n>palletType}" />
+						</Column>
+						<Column hAlign="Right">
+							<Text text="{i18n>palletQuantity}" />
+						</Column>
+						<Column hAlign="Right">
+							<Text text="{i18n>caseQuantity}" />
+						</Column>
+						<Column hAlign="Right" width="10%">
+						<Text text=""/>
+					</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<ObjectIdentifier
+									title="{productModel>Matnr}" />
+								<Text text="{productModel>Maktx}" />
+								<Text text="{productModel>Letyp}" />
+								<Text text="{productModel>Palletqty}" />
+								<ObjectIdentifier title="{productModel>Kwmeng}" />
+								<!-- <NumericContent value="{ordersModel>Pallet Quantity}" withMargin="false"/> -->
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</content>
+		<footer>
+			<!-- <Bar class="footerColor">
+				<contentRight>
+					<Button class="footerColor" text="Copy Order Details"
+						press="onCopyOrderPress" />
+				</contentRight>
+			</Bar> -->
+		</footer>
+	</Page>
+</mvc:View>

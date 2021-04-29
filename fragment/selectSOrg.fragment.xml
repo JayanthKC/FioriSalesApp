@@ -1,0 +1,31 @@
+<core:FragmentDefinition id="DuplicateProFrag" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog showHeader="false" contentWidth="400px" contentHeight="500px" horizontalScrolling="false"
+		verticalScrolling="false">
+		<Page id="id_selectSOrgPage" showFooter="false">
+			<customHeader>
+				<Bar class="pcUiBarBackground">
+					<contentLeft>
+						<Button text="Cancel" press="onCancelSOrgPress" class="filterTextColor"></Button>
+					</contentLeft>
+					<contentMiddle>
+						<Text text="Sales Organisation" class="filterTextColor"></Text>
+					</contentMiddle>
+					<contentRight>
+						<Button text="Apply" press="onSelectSorg"
+							class="buttoncustom_cs" />
+					</contentRight>
+				</Bar>
+			</customHeader>
+			<content>
+				<VBox class="sapUiLargeMargin" width="20rem">
+					<Label text="Choose Sales Organisation"/>
+					<Select id="idsorg" 
+						items="{ path: 'globalModel>/sOrgData', sorter: { path: 'Vkorg' } }" width="100%">
+						<core:ListItem key="{globalModel>Vkorg}" text="{globalModel>Vtext} ({globalModel>Vkorg})"
+							additionalText="{globalModel>Vtext}"/>
+					</Select>
+				</VBox>
+			</content>
+		</Page>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,31 @@
+<mvc:View xmlns:core="sap.ui.core" 
+		   xmlns:mvc="sap.ui.core.mvc"
+		   xmlns="sap.m"	   
+		   xmlns:tnt="sap.tnt" 
+		   controllerName="com.kcc.ZFIORD_SALES.controller.SubBrands"
+		   xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page>
+		<customHeader>
+			<Bar class="pcUiBarBackground">
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" text="Brands" press="onNavBackToBrandsPage"  class="buttoncustom_cs"/>
+				</contentLeft>
+				<contentMiddle>
+					<Label text="{i18n>productCatalogAppTitle}" />
+				</contentMiddle>
+				<contentRight>
+					<core:Icon
+						src="sap-icon://cart"
+						tooltip="{i18n>cartAction}"
+						size="1.4rem"
+						color="#FFFFFF"
+						press=".onCartPress"/>
+					<tnt:InfoLabel text="{path:'oCartModel>/', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retItemsLength'}" width="40px" renderMode="Narrow" colorScheme="3" displayOnly= "true" />
+				</contentRight>
+			</Bar>
+		</customHeader>		
+		<content>
+			<SplitApp id="splitContainerControl" />
+		</content>
+	</Page>
+</mvc:View>

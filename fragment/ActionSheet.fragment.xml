@@ -1,0 +1,12 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ActionSheet
+		title="{i18n>chooseYourAction}"
+		showCancelButton="true"
+		placement="HorizontalPreferredRight">
+			<Button text="{i18n>viewOrderDtls}" icon="sap-icon://show" press=".onPressToViewOrderDetail" />
+			<Button text="{i18n>copyOrderDtls}" icon="sap-icon://copy" press=".onPressToCopyOrder" />
+			<Button text="{i18n>editOrderDtls}" visible="{globalModel>/isEditOptVisble}" icon="sap-icon://edit" press=".onPressToEditOrder" />
+	</ActionSheet>
+</core:FragmentDefinition>

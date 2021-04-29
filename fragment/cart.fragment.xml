@@ -1,0 +1,114 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:p="sap.suite.ui.commons" xmlns:tnt="sap.tnt"
+	xmlns:custData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog showHeader="false" contentWidth="70%"
+		contentHeight="100%" resizable="false">
+		<Page title="{i18n>cart}"
+			class="cCartClass cCartbClass sapUiResponsiveContentPadding">
+			<content>
+				<HBox justifyContent="Center" alignItems="Center">
+					<VBox class="sapUiLargeMarginEnd">
+						<NumericContent
+							value="{path:'oCartModel>/', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retItemsLength'}"
+							withMargin="false" class="pcTotalCSS" />
+						<Label text="Product SKUs" />
+					</VBox>
+					<VBox class="sapUiLargeMarginEnd">
+						<NumericContent
+							value="{path:'oCartModel>/', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retQtyTCases'}"
+							withMargin="false" class="pcTotalCSS" />
+						<Label text="Total Cases" />
+					</VBox>
+					<VBox class="sapUiLargeMarginEnd">
+						<NumericContent
+							value="{path:'oCartModel>/', formatter:'com.kcc.ZFIORD_SALES.util.Formatter.retQtyTPallets'}"
+							withMargin="false" class="pcTotalCSS" />
+						<Label text="Total Pallets" />
+					</VBox>
+				</HBox>
+				<Table class="sapUiMediumMarginTop" showNoData="false">
+					<columns>
+						<Column hAlign="Left" width="40%">
+							<Text text="Product Code / Product Description" />
+						</Column>
+						<Column hAlign="Left" width="20%">
+							<Text text="Pallet Type" />
+						</Column>
+						<Column hAlign="Center">
+							<Text text="{i18n>palletQty}" />
+						</Column>
+						<Column hAlign="Center">
+							<Text text="Qty. in Cases" />
+						</Column>
+						<Column hAlign="Center">
+							<Text text="" />
+						</Column>
+					</columns>
+				</Table>
+				<ScrollContainer height="85%" vertical="true"
+					focusable="true">
+					<Table items="{oCartModel>/}"
+						updateFinished="onptfilterapply">
+						<columns>
+							<Column hAlign="Left" width="40%">
+							</Column>
+							<Column hAlign="Left" width="20%">
+							</Column>
+							<Column hAlign="Center">
+							</Column>
+							<Column hAlign="Center">
+							</Column>
+							<Column hAlign="Center">
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{oCartModel>Matnr}"
+										text="{oCartModel>Maktx}"
+										 />
+									<SegmentedButton
+										class="segButtonColor pcUiSegmntBtn"
+										tooltip="{i18n>palletSize}"
+										selectedKey="{oCartModel>Letyp}">
+										<items>
+											<SegmentedButtonItem
+												key="{i18n>s1PalletSize}" text="{i18n>s1PalletSize}" />
+											<SegmentedButtonItem
+												key="{i18n>s2PalletSize}" text="{i18n>s2PalletSize}" />
+											<SegmentedButtonItem
+												key="{i18n>s3PalletSize}" text="{i18n>s3PalletSize}" />
+										</items>
+									</SegmentedButton>
+									<Text text="{oCartModel>Palletqty}" class="sapUiSmallMarginTop"/>
+									<Input value="{oCartModel>Kwmeng}" textAlign="Center"
+										change=".onQuantChange" width="auto"
+										class="inputBorder inputTextColor" />
+									<core:Icon src="sap-icon://delete" class="sapUiSmallMarginTop"
+										tooltip="{i18n>pressToDelete}" size="1.2rem" color="red"
+										press="onNProductDeletePress" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</ScrollContainer>
+			</content>
+			<footer>
+				<Toolbar class="footerColor">
+					<content>
+						<ToolbarSpacer />
+						<HBox xmlns="sap.m" justifyContent="End">
+							<Button xmlns="sap.m" class="buttoncustom_cs"
+								text="{i18n>proceedToOrder}" enabled="true"
+								press=".onProceddToOrderPress" />
+							<Button xmlns="sap.m"
+								class="sapUiSmallMarginEnd buttoncustom_cs" text="Close"
+								enabled="true" press="onCartClose" />
+						</HBox>
+					</content>
+				</Toolbar>
+			</footer>
+		</Page>
+	</Dialog>
+</core:FragmentDefinition>

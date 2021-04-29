@@ -1,0 +1,351 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "com.kcc.ZFIORD_SALES",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.38.11"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZSDEU_SB_FOC_NEW_ORDER_SRV",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"gQuotationService": {
+				"uri": "/sap/opu/odata/sap/ZSDEU_SB_FAV_QUO_SRV",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"quotationService": {
+				"uri": "/sap/opu/odata/sap/ZSDEU_SB_FOC_ORDER_QUO_SRV",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "com.kcc.ZFIORD_SALES.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {
+					
+				},
+				"sap.ui.core": {
+					
+				},
+				"sap.m": {
+					
+				},
+				"sap.f": {
+					
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.kcc.ZFIORD_SALES.i18n.i18n"
+				}
+			},
+			"globalModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"oMainModel": {
+				"dataSource": "mainService",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true
+			},
+			"gQuoteModel": {
+				"dataSource": "gQuotationService",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true
+			},
+			"quoteModel": {
+				"dataSource": "quotationService",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true
+			},
+			"createOrderModel": {
+				"dataSource": "quotationService",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true
+			},
+			"oJsonModelCustomers": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"oJsonModelOrder": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"oJsonModelOrderList": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"oDropDownModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"errorMsgModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"oCartModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"oBrandsModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+		 	"fglobalmodel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			}	
+	 	},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "util/underscore.js"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.kcc.ZFIORD_SALES.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"transition": "slide",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "LaunchScreen",
+					"pattern": "",
+					"target": "launchScreen"
+				},
+				{
+					"name": "Brands",
+					"pattern": "Brands",
+					"target": "brands"
+				},
+				{
+					"name": "SubBrands",
+					"pattern": "SubBrands/{brandId}",
+					"target": [
+						"subBrandsList",
+						"skuList"
+					]
+				},
+				{
+					"name": "skuList",
+					"pattern": "SubBrands/{brandId}/{subbrandId}",
+					"target": [
+						"subBrandsList",
+						"skuList"
+					]
+				},
+				{
+					"name": "SKUDetails",
+					"pattern": "SubBrands/{brandId}/{subBrandId}/{skuId}",
+					"target": [
+						"subBrandsList",
+						"skuDetails"
+					]
+				},
+				{
+					"name": "oBrands",
+					"pattern": "oBrands/{orderId}",
+					"target": "brands"
+				},
+				{
+					"name": "oSubBrands",
+					"pattern": "SBrands/{brandId}/{orderId}",
+					"target": [
+						"subBrandsList",
+						"skuList"
+					]
+				},
+				{
+					"name": "oskuList",
+					"pattern": "SBrands/{brandId}/{subbrandId}/{orderId}",
+					"target": [
+						"subBrandsList",
+						"skuList"
+					]
+				},
+				{
+					"name": "oSKUDetails",
+					"pattern": "SBrands/{brandId}/{subBrandId}/{skuId}/{orderId}",
+					"target": [
+						"subBrandsList",
+						"skuDetails"
+					]
+				},
+				{
+					"name": "AllCustomers",
+					"pattern": "AllCustomers",
+					"target": "allCustomers"
+				},
+				{
+					"name": "OrdersList",
+					"pattern": "OrdersList/{customerId}/{customerShip}",
+					"target": "ordersList"
+				},
+				{
+					"name": "OrderCreation",
+					"pattern": "OrderCreation",
+					"target": "orderCreation"
+				},
+				{
+					"name": "cOrderCreation",
+					"pattern": "cOrderCreation/{cOrderId}",
+					"target": "orderCreation"
+				},
+				{
+					"name": "cqOrderCreation",
+					"pattern": "cqOrderCreation/{cqOrderId}",
+					"target": "orderCreation"
+				},
+				{
+					"name": "dOrderCreation",
+					"pattern": "dOrderCreation/{dOrderId}",
+					"target": "orderCreation"
+				},
+				{
+					"name": "OrderDetails",
+					"pattern": "OrderDetails/{orderId}/{shipToId}",
+					"target": "orderDetails"
+				},
+				{
+					"name": "AllOrders",
+					"pattern": "OrdersList",
+					"target": "AllOrders"
+				}
+			],
+			"targets": {
+				"launchScreen": {
+					"viewType": "XML",
+					"viewName": "LaunchScreen"
+				},
+				"AllOrders": {
+					"viewType": "XML",
+					"viewName": "OrdersList"
+				},
+				"brands": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "Brands"
+				},
+				"allCustomers": {
+					"viewType": "XML",
+					"viewName": "AllCustomers"
+				},
+				"ordersList": {
+					"viewType": "XML",
+					"viewName": "OrdersList"
+				},
+				"orderCreation": {
+					"viewType": "XML",
+					"viewName": "OrderCreation"
+				},
+				"orderDetails": {
+					"viewType": "XML",
+					"viewName": "OrderDetails"
+				},
+				"subBrands": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "SubBrands"
+				},
+				"splitviewTarget": {
+					"viewName": "SubBrands"
+				},
+				"subBrandsList": {
+					"viewName": "SubBrandsList",
+					"parent": "splitviewTarget",
+					"controlId": "splitContainerControl",
+					"controlAggregation": "masterPages",
+					"viewLevel": "0"
+				},
+				"skuList": {
+					"viewName": "SKUList",
+					"parent": "splitviewTarget",
+					"controlId": "splitContainerControl",
+					"controlAggregation": "detailPages",
+					"viewLevel": "1"
+				},
+				"skuDetails": {
+					"viewName": "SKUDetails",
+					"parent": "splitviewTarget",
+					"controlId": "splitContainerControl",
+					"controlAggregation": "detailPages",
+					"viewLevel": "2"
+				},
+				"cart": {
+					"viewName": "Cart",
+					"parent": "splitviewTarget",
+					"controlId": "splitContainerControl",
+					"controlAggregation": "detailPages"
+				},
+				"NotFound": {
+					"viewType": "XML",
+					"viewName": "NotFound"
+				}
+			}
+		}
+	}
+}

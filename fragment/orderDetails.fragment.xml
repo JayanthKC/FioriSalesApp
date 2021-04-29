@@ -1,0 +1,213 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:p="sap.suite.ui.commons" xmlns:tnt="sap.tnt"
+	xmlns:custData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<VBox class="bulkVBox">
+		<l:Grid>
+			<l:content>
+				<VBox class="sapUiSmallMargin sapUiMediumMarginBegin">
+					<ObjectIdentifier title="{hederDataModel>/0/Name1}" />
+					<Text text="Sold to {hederDataModel>/0/Kunnr}" />
+					<Text text="{hederDataModel>/0/StrSuppl1}" />
+					<Text text="{hederDataModel>/0/StrSuppl2}" />
+					<HBox class="sapUiSmallMarginTop">
+						<Label text="Requestor / Customer Reference"
+							class="sapUiTinyMarginEnd" />
+						<Text text="{hederDataModel>/0/Bstnk}" wrapping="false" />
+					</HBox>
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+				<VBox
+					class="sapUiSmallMargin sapUiMediumMarginTop sapUiLargeMarginBegin">
+					<Text text="Ship to {hederDataModel>/0/KunnrSh}" />
+					<Text text="{hederDataModel>/0/Address}" />
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+				<VBox
+					class="sapUiSmallMargin sapUiMediumMarginTop sapUiLargeMarginBegin">
+					<Text text="Ordered ID {path:'hederDataModel>/0/Vbeln'}" />
+					<Text
+						text="Ordered on {path:'hederDataModel>/0/Erdat',formatter:'.formatter.dateConversion'}" />
+					<!-- <Text text="Delivery Due on {path:'oJsonModelOrder>/Ddue',formatter:'.formatter.dateConversion'}" 
+						/> -->
+					<HBox class="sapUiMediumMarginTop">
+						<tnt:InfoLabel text="{hederDataModel>/0/Statdesc}"
+							displayOnly="true" colorScheme="1" />
+					</HBox>
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+			</l:content>
+		</l:Grid>
+	</VBox>
+	<VBox class="bulkVBox sapUiSmallMarginTop">
+		<l:Grid>
+			<l:content>
+				<VBox class="sapUiSmallMargin sapUiMediumMarginBegin">
+					<Text text="Delivery Details" />
+					<VBox class="sapUiSmallMarginTop">
+						<ObjectIdentifier
+							title="{hederDataModel>/0/Reqname}" />
+						<Text text="{hederDataModel>/0/NameSh}" />
+					</VBox>
+					<VBox class="sapUiTinyMarginTop">
+						<Text text="{hederDataModel>/0/Delvaddr1}" />
+						<Text text="{hederDataModel>/0/Delvaddr2}"
+							visible="{=${oJsonModelOrder>/Delvaddr2}===''?false:true}" />
+						<Text
+							text="{oJsonModelOrder>/Ddcity}, {oJsonModelOrder>/Ddpostalcode}" />
+						<Text
+							text="{oJsonModelOrder>/Ddregion}, {oJsonModelOrder>/Ddcountry}" />
+					</VBox>
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+				<VBox
+					class="sapUiSmallMargin sapUiMediumMarginTop sapUiLargeMarginBegin">
+					<HBox class="sapUiSmallMarginTop">
+						<Label text="Route" class="sapUiTinyMarginEnd" />
+						<Text text="{oJsonModelOrder>/Bezei}" wrapping="false" />
+					</HBox>
+					<HBox>
+						<Label text="Delivering Plant " class="sapUiTinyMarginEnd" />
+						<Text text="{hederDataModel>/0/Name2}" wrapping="false" />
+					</HBox>
+					<HBox>
+						<Label text="UoM:" class="sapUiTinyMarginEnd" />
+						<Text text="PC" wrapping="false" />
+					</HBox>
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+				<VBox
+					class="sapUiSmallMargin sapUiLargeMarginTop sapUiLargeMarginBegin">
+					<Text
+						text="Requested Delivery Date : {path:'hederDataModel>/0/Vdatu',formatter:'.formatter.dateConversion'}" />
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+			</l:content>
+		</l:Grid>
+	</VBox>
+	<VBox class="bulkVBox sapUiSmallMarginTop">
+		<l:Grid>
+			<l:content>
+				<VBox class="sapUiSmallMargin sapUiMediumMarginBegin">
+					<Text text="Order Details" />
+					<HBox class="sapUiSmallMarginTop">
+						<Label text="Requestor:" class="sapUiTinyMarginEnd" />
+						<Text text="{oJsonModelOrder>/Reqnamdesc}" wrapping="false" />
+					</HBox>
+					<HBox>
+						<Label text="Authoriser:" class="sapUiTinyMarginEnd" />
+						<Text text="{oJsonModelOrder>/Authdesc}" wrapping="false" />
+					</HBox>
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+				<VBox
+					class="sapUiSmallMargin sapUiMediumMarginTop sapUiLargeMarginBegin">
+					<HBox class="sapUiSmallMarginTop">
+						<Label text="Order Reason:" class="sapUiTinyMarginEnd" />
+						<Text text="{oJsonModelOrder>/Ordreason}" wrapping="false" />
+					</HBox>
+					<HBox>
+						<Label text="Project Code:" class="sapUiTinyMarginEnd" />
+						<Text text="{oJsonModelOrder>/Prjcode}" wrapping="false" />
+					</HBox>
+					<HBox class="sapUiSmallMarginTop">
+						<Label text="Reason for FOC:" class="sapUiTinyMarginEnd" />
+						<Text text="{oJsonModelOrder>/Reason}" wrapping="false" />
+					</HBox>
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+				<VBox
+					class="sapUiSmallMargin sapUiMediumMarginTop sapUiLargeMarginBegin">
+					<VBox class="sapUiSmallMarginTop">
+						<Label text="Delivery Instruction" />
+						<Text
+							text="{oJsonModelOrder>/MapFOCDelText/Tdline}"
+							wrapping="true" />
+					</VBox>
+					<layoutData>
+						<l:GridData span="XL4 L4 M4 S4" />
+					</layoutData>
+				</VBox>
+			</l:content>
+		</l:Grid>
+	</VBox>
+	<HBox justifyContent="Center" alignItems="Center"
+		class="sapUiSmallMarginTop bulkVBox">
+		<VBox class="sapUiLargeMarginEnd">
+			<NumericContent
+				value="{path:'oJsonModelOrder>/MapFOCItems/results/', formatter:'.formatter.retItemsLength'}"
+				withMargin="false" class="sapUiMediumMarginBegin" />
+			<Label text="Product SKUs"></Label>
+		</VBox>
+		<VBox class="sapUiLargeMarginBegin">
+			<NumericContent value="{oJsonModelOrder>/Netwr}"
+				scale="{oJsonModelOrder>/Waerk}" withMargin="false"
+				class="sapUiSmallMarginBeginBottom" />
+			<Label text="Total Cost"></Label>
+		</VBox>
+	</HBox>
+	<VBox class="sapUiSmallMarginTop bulkVBox">
+		<Table
+			class="stablecol_cs sapUiSmallMargin sapUiMediumMarginBegin"
+			items="{path:'oJsonModelOrder>/MapFOCItems/results/'}">
+			<columns>
+				<Column>
+					<Text text="Product Code / Product Description" />
+				</Column>
+				<Column hAlign="Right">
+					<Text text="Cost Price" />
+				</Column>
+				<Column hAlign="Right">
+					<Text text="Total Cost of Item" />
+				</Column>
+				<!-- <Column>
+					<Text text="Pallet Quantity" />
+				</Column> -->
+				<Column hAlign="Center">
+					<Text text="Quantity" />
+				</Column>
+				<Column hAlign="Center">
+					<Button text="Check Availability" class="filterButton"
+						press="onAvailblityPress" />
+				</Column>
+				<!-- <Column > <Text text="Availability"/> </Column> -->
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{oJsonModelOrder>Matnr}"
+							text="{oJsonModelOrder>Maktx}" />
+						<ObjectNumber number="{oJsonModelOrder>Unitprice}"
+							unit="{oJsonModelOrder>Waerk}" />
+						<ObjectNumber number="{oJsonModelOrder>Netwr}"
+							unit="{oJsonModelOrder>Waerk}" />
+						<!-- <ObjectIdentifier
+							title="{oJsonModelOrder>Palletqty}" /> -->
+						<ObjectIdentifier
+							title="{oJsonModelOrder>Kwmeng}" />
+						<Icon xmlns="sap.ui.core"
+							src="{=${oJsonModelOrder>StockAvailable} === 'X' ? 'sap-icon://accept' : 'sap-icon://alert'}"
+							color="{=${oJsonModelOrder>StockAvailable} === 'X' ? '#008000' : '#FF8C00'}"
+							visible="{=${oJsonModelOrder>StockAvailable} === undefined ? false : true}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VBox>
+</core:FragmentDefinition>

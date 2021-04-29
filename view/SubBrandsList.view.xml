@@ -1,0 +1,28 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:f="sap.f"
+	controllerName="com.kcc.ZFIORD_SALES.controller.SubBrandsList"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="id_pSBList" width="80%"
+		title="{globalModel>/bText}" navButtonPress=".onNavBack"
+		showNavButton="false">
+		<subHeader>
+			<Toolbar>
+				<SearchField id="id_sbSearch" class="sarchBarCls"
+					placeholder="{i18n>searchsbPlaceholder}"
+					liveChange="onLivesBrandSearch">
+				</SearchField>
+			</Toolbar>
+		</subHeader>
+		<List id="idSBList" items="{oBrandsModel>/subBrands/}"
+			mode="SingleSelectMaster" updateFinished="onUpdateFinished"
+			selectionChange="onSubBrandsSelectionChange">
+			<items>
+				<StandardListItem class="icClass"
+					title="{oBrandsModel>Vtext}"
+					description="{oBrandsModel>Prodh}" type="Active"
+					icon="{= ${oBrandsModel>Url} === ''? 'sap-icon://product' : ${oBrandsModel>Url}}" iconDensityAware="false"
+					iconInset="false" wrapping="true" />
+			</items>
+		</List>
+	</Page>
+</mvc:View>

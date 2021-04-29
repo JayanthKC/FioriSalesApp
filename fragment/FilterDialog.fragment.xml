@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog id="id_filter" showHeader="false" contentWidth="410px"
+		contentHeight="250px">
+		<NavContainer id="id_fNav">
+			<Page id="id_fFPage" showFooter="false">
+				<customHeader>
+					<Bar class="filterCSS ">
+						<contentLeft>
+							<Button text="Cancel" press="onCancelfPress"
+								class="filterTextColor buttoncustom_cs" />
+						</contentLeft>
+						<contentMiddle>
+							<Text text="Filter" class="filterTextColor"></Text>
+						</contentMiddle>
+						<contentRight>
+							<Button text="Reset" press="onResetfPress"
+								class="filterTextColor buttoncustom_cs" />
+							<Button text="Apply" press="onApplyfPress"
+								class="filterTextColor buttoncustom_cs" />
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox>
+						<Text text="Filter By" class="sapUiSmallMargin fFby"></Text>
+					</HBox>
+					<SelectList id="fparm_id" class="filterlist"
+						items="{oFParamModel>/}" itemPress="onFParamPress">
+						<core:Item text="{oFParamModel>Key}"
+							key="{oFParamModel>Key}" class="sapUiSmallMarginTop filterlist" />
+					</SelectList>
+				</content>
+			</Page>
+			<Page id="id_fvalPage">
+				<customHeader>
+					<Bar class="filterCSS ">
+						<contentLeft>
+							<core:Icon src="sap-icon://nav-back" width="14px"
+								class="sapUiSmallMarginBegin naviconColor" press="onfBackPress" />
+						</contentLeft>
+						<contentMiddle>
+							<Text text="Filter By : " class="filterTextColor"></Text>
+							<Text id="id_type" text=""
+								class="sapUiTinyMarginTop filterTextColor buttoncustom_cs"></Text>
+						</contentMiddle>
+						<contentRight>
+							<Button id="id_frest" text="Reset" press="onResetfPress"
+								class="filterTextColor buttoncustom_cs" />
+							<Button text="Apply" press="onApplyfPress"
+								class="filterTextColor buttoncustom_cs" />
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<List id="idf_date"
+					items="{path: 'oJsonModelOrderList>/filterDateData/'}"
+					visible="{fglobalmodel>/date}" mode="SingleSelectLeft">
+					<StandardListItem
+						selected="{parts:['oJsonModelOrderList>Date','fglobalmodel>/fData/Date'], formatter:'com.kcc.ZFIORD_SALES.util.Formatter.selectFDate'}"
+						title="{oJsonModelOrderList>Date}" />
+				</List>
+				<List id="idf_status"
+					items="{path: 'oJsonModelOrderList>/filterStatusData/'}"
+					visible="{fglobalmodel>/status}" mode="MultiSelect">
+					<StandardListItem
+						selected="{parts:['oJsonModelOrderList>Statdesc','fglobalmodel>/fData/Status'], formatter:'com.kcc.ZFIORD_SALES.util.Formatter.selectFDate'}"
+						title="{oJsonModelOrderList>Statdesc}" />
+				</List>
+			</Page>
+		</NavContainer>
+	</Dialog>
+</core:FragmentDefinition>

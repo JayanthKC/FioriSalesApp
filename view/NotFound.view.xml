@@ -1,0 +1,21 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.kcc.ZFIORD_SALES.controller.NotFound"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>pageNotFoundTitle}">
+				<content>
+					<MessagePage
+						showHeader="false"
+						text="{i18n>pageNotFoundText}"
+						enableFormattedText="true" 
+						description="{i18n>pageNotFoundDesc}"
+						icon="sap-icon://message-warning">
+					<buttons>
+						<Button text="{i18n>pageNotFoundBtn}" press=".onButtonPress"></Button>
+					</buttons>
+					</MessagePage>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

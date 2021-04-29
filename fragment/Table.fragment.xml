@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	
+	<TableSelectDialog id="idTable" class="footerColorTable dialog_Title"
+		noDataText="No Customers Found" title="Select Customer" liveChange=".handleSearch"
+		confirm=".handleValueHelpSelect" cancel=".handleValueHelpClose" 
+		multiSelect="false" rememberSelections="false" 
+		showClearButton="false"
+		items="{ path : 'oJsonModelOrder2>/'}">
+		<ColumnListItem
+			selected="{parts:['oJsonModelOrder2>CustomerName','oJsonModelOrder>/MapOrderHdr/0/NameSh'], formatter:'.formatter.selectCustomer'}">
+			<cells>
+<!-- 				<ObjectIdentifier title="{oJsonModelOrder2>KunnrSp}"/> -->
+				<ObjectIdentifier title="{oJsonModelOrder2>KunnrSh}"/>
+				<Text text="{oJsonModelOrder2>Name1}"/>
+				<Text text="{oJsonModelOrder2>Address}"/>
+				<Text text="{oJsonModelOrder2>Pstlz}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column >
+				<header>
+					<Text text="{i18n>shipTo}" /> 
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="{i18n>customerName}" /> 
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="{i18n>location}" />
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="{i18n>postalCode}" /> 
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
